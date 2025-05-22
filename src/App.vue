@@ -1,9 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from "vue";
+import { AdviceStore } from "./store/Advice";
+import Advice from "./components/Advice.vue";
+const store = AdviceStore();
+
+const msg = computed(() => store.textCount);
+</script>
 
 <template>
-  Advice #<!-- Advice ID goes here -->
-
-  "<!-- Advice text goes here -->"
+  <Advice />
+  <!-- Advice text goes here -->
 
   <div class="attribution">
     Challenge by
