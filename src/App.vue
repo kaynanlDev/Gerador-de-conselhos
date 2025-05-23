@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import Advices from "./components/Advices.vue";
 import { AdviceStore } from "./store/Advice";
-import Advice from "./components/Advice.vue";
+import { onMounted } from "vue";
 const store = AdviceStore();
 
-const msg = computed(() => store.textCount);
+onMounted(() => {
+  store.getApi();
+});
 </script>
 
 <template>
-  <Advice />
+  <Advices />
   <!-- Advice text goes here -->
-
   <div class="attribution">
     Challenge by
     <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"

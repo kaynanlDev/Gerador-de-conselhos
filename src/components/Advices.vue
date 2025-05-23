@@ -1,14 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { AdviceStore } from "../store/Advice";
+
+const store = AdviceStore();
+const msg = store.advices;
+</script>
 
 <template>
   <div class="advice-container">
     <p class="advice-title">Advice #</p>
-    <p>
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus nisi
-      itaque, sapiente quos rerum qui architecto impedit voluptates facere
-      eveniet nesciunt dicta reiciendis distinctio soluta cupiditate magnam quod
-      eius molestiae."
-    </p>
+    <p>"{{ msg }}"</p>
     <div class="divider">
       <img src="../assets/images/pattern-divider-desktop.svg" alt="divider" />
     </div>
