@@ -2,17 +2,19 @@ import { defineStore } from "pinia";
 
 export const AdviceStore = defineStore("advice", {
   state: () => ({
-    advices: {},
+    menssagens: "",
+    idAdvice: 0,
   }),
   actions: {
-    async getApi() {
-      await fetch("https://api.adviceslip.com/advice")
+    getApi() {
+      fetch("https://api.adviceslip.com/advice")
         .then((r) => {
           return r.json();
         })
         .then((data) => {
           console.log(data);
-          this.advices = data.slip;
+          this.menssagens = data.slip.advice;
+          this.idAdvice = data.slip.id;
         });
     },
   },

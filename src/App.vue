@@ -1,16 +1,12 @@
 <script setup lang="ts">
-import Advices from "./components/Advices.vue";
+import AdviceContainer from "./components/AdviceContainer.vue";
 import { AdviceStore } from "./store/Advice";
 import { onMounted } from "vue";
 const store = AdviceStore();
-
-onMounted(() => {
-  store.getApi();
-});
 </script>
 
 <template>
-  <Advices />
+  <AdviceContainer />
   <!-- Advice text goes here -->
   <div class="attribution">
     Challenge by
@@ -20,4 +16,9 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.attribution {
+  position: absolute;
+  bottom: 0;
+}
+</style>

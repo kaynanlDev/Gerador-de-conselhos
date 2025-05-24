@@ -1,18 +1,20 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { AdviceStore } from "../store/Advice";
-
 const store = AdviceStore();
-const msg = store.advices;
+const msg = computed(() => store.menssagens);
+const newIdAdvice = computed(() => store.idAdvice);
 </script>
 
 <template>
   <div class="advice-container">
-    <p class="advice-title">Advice #</p>
-    <p>"{{ msg }}"</p>
+    <p class="advice-title">Advice #{{ newIdAdvice }}</p>
+    <p v-if="store.menssagens">"{{ msg }}"</p>
+    <p v-else>Clique no botão para gerar um conselho.</p>
     <div class="divider">
       <img src="../assets/images/pattern-divider-desktop.svg" alt="divider" />
     </div>
-    <div class="icon-dice">
+    <div @click="store.getApi()" class="icon-dice">
       <img src="../assets/images/icon-dice.svg" alt="icon dice" />
     </div>
   </div>
@@ -63,10 +65,15 @@ const msg = store.advices;
     padding: 8px;
     border-radius: 50%;
     cursor: pointer;
+    transition: 0.3s ease;
 
     img {
       width: 100%;
       height: 100%;
+    }
+
+    &:hover {
+      transform: scale(1.1);
     }
   }
 }
