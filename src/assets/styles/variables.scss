@@ -1,3 +1,9 @@
+@mixin responsivi() {
+  @media screen and (max-width: 540px) {
+    @content;
+  }
+}
+
 $Blue-200: hsl(193, 38%, 86%);
 $Green-300: hsl(150, 100%, 66%);
 

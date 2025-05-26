@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
 import AdviceContainer from "./components/AdviceContainer.vue";
 import { AdviceStore } from "./store/Advice";
 const store = AdviceStore();

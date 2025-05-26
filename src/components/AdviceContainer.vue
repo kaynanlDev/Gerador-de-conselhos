@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { AdviceStore } from "../store/Advice";
 const store = AdviceStore();
 const msg = computed(() => store.menssagens);
@@ -9,10 +9,10 @@ const newIdAdvice = computed(() => store.idAdvice);
 <template>
   <div class="advice-container">
     <p class="advice-title">Advice #{{ newIdAdvice }}</p>
-    <p v-if="store.menssagens">"{{ msg }}"</p>
+    <p v-if="msg">"{{ msg }}"</p>
     <p v-else>Clique no botão para gerar um conselho.</p>
     <div class="divider">
-      <img src="../assets/images/pattern-divider-desktop.svg" alt="divider" />
+      <img src="../assets/images/pattern-divider-mobile.svg" alt="divider" />
     </div>
     <div @click="store.getApi()" class="icon-dice">
       <img src="../assets/images/icon-dice.svg" alt="icon dice" />
@@ -53,6 +53,11 @@ const newIdAdvice = computed(() => store.idAdvice);
     img {
       width: 100%;
       height: 100%;
+    }
+
+    @include responsivi() {
+      width: 70%;
+      height: 16px;
     }
   }
 
